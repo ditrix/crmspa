@@ -1,3 +1,3 @@
 <template>
-    soon dashboard
+    soon Deals
 </template>

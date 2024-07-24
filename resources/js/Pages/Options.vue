@@ -1,3 +1,3 @@
 <template>
-    soon dashboard
+    soon Options
 </template>
