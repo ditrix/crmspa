@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Permission;
 use Illuminate\Http\Request;
+use App\Http\Resources\PermissionResource;
+use App\Http\Requests\PermissionRequest;
+
 
 class PermissionController extends Controller
 {
@@ -13,15 +16,7 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
+        return PermissionResource::collection(Permission::all());
     }
 
     /**
@@ -29,22 +24,16 @@ class PermissionController extends Controller
      */
     public function show(Permission $permission)
     {
-        //
+        return new PermissionResource(Permission::where('id',$permission->id)->first());
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Permission $permission)
+    public function update(PermissionRequest $request, Permission $permission)
     {
-        //
+        $permission->update($request->validated());
+        return new PermissionResource($permission);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Permission $permission)
-    {
-        //
-    }
 }

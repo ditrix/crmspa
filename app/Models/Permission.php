@@ -9,6 +9,10 @@ class Permission extends Model
 {
     use HasFactory;
 
+    const ROLE_ADMIN = 'admin';
+    const ROLE_TOP_MANAGER = 'top_manager';
+    const ROLE_MANAGER = 'manager';
+
     protected $fillable = [
         'role',
         'rw_own_customer',
@@ -21,4 +25,5 @@ class Permission extends Model
         'rw_parameters',
         'rw_users',
     ];
+
 }
