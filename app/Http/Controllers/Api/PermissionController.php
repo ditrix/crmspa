@@ -36,4 +36,16 @@ class PermissionController extends Controller
         return new PermissionResource($permission);
     }
 
+    /**
+     * Update the specified resource in storage.
+     */
+    public function store(PermissionRequest $request)
+    {
+
+        $permission = Permission::create($request->validated());
+
+        return new PermissionResource($permission);
+    }
+
+
 }

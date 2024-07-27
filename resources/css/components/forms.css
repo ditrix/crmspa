@@ -4,3 +4,11 @@
 .form-controll {
     padding: 1rem;
 }
+
+.inline_form_block .form-item {
+display: inline-block;
+}
+
+.show_form {
+    padding: 1.5rem;
+}
