@@ -1,24 +1,34 @@
 <template>
+<div class="breadcrump">
+    <router-link
+        class="items-center px-6 py-2 text-xs font-semibold ml_2"
+        :to="{ name: 'permissions.index' }">
+        permissions
+    </router-link>
+</div>
 
-    <div class="page_title text-xl mb-4">Permission {{ permission.role }}</div>
+<div class="contanier">
+
+    <div class="page_title text-xl mb-2 mt-4">Permission {{ permission.role }}</div>
 
         <form class="show_form space-y-6 rounded-md shadow-md mt_2 p" v-on:submit.prevent="SavePermission">
-            <div class="form-block">
-                <div class="form-item">
-                    <div class="form-item">
+            <div class="form-input_grout_inline">
+
+                    <div class="form-item input-inline">
                         <label for="rw_own_customer" class="block text-sm font-medium text-gray-700">R/W own customer</label>
                         <div class="mt-1">
-                            <select class="widget_25 px-4 py-3 rounded-full" name="rw_own_customer" v-model="permission.rw_own_customer">
+                            <select class="rounded-full" style="width: 100%;" name="rw_own_customer" v-model="permission.rw_own_customer">
                                 <option value="0">No</option>
                                 <option value="1">Yes</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="form-item">
+
+                    <div class="form-item input-inline" >
                         <label for="rw_customer" class="block text-sm font-medium text-gray-700">R/W all customer</label>
                         <div class="mt-1">
-                            <select class="widget_25 px-4 py-3 rounded-full" name="rw_customer" v-model="permission.rw_customer">
+                            <select class="rounded-full" style="width: 100%;" name="rw_customer" v-model="permission.rw_customer">
                                 <option value="0">No</option>
                                 <option value="1">Yes</option>
                             </select>
@@ -26,30 +36,106 @@
                     </div>
 
 
+
+
+                    <div class="form-item input-inline">
+                        <label for="rw_own_deals" class="block text-sm font-medium text-gray-700">R/W own deals</label>
+                        <div class="mt-1">
+                            <select class="rounded-full" style="width: 100%;" name="rw_own_deals" v-model="permission.rw_own_deals">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-item input-inline">
+                        <label for="rw_deals" class="block text-sm font-medium text-gray-700">R/W all deals</label>
+                        <div class="mt-1">
+                            <select class="rounded-full" style="width: 100%;" name="rw_deals" v-model="permission.rw_deals">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+            </div>
+
+            <div class="form-input_grout_inline">
+
+                <div class="form-item input-inline">
+                        <label for="rw_own_reports" class="block text-sm font-medium text-gray-700">R/W own reports</label>
+                        <div class="mt-1">
+                            <select class="rounded-full" style="width: 100%;" name="rw_own_reports" v-model="permission.rw_own_reports">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
                 </div>
+
+                <div class="form-item input-inline">
+                        <label for="rw_reports" class="block text-sm font-medium text-gray-700">R/W all reports</label>
+                        <div class="mt-1">
+                            <select class="rounded-full" style="width: 100%;" name="rw_reports" v-model="permission.rw_reports">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                </div>
+
+
+                <div class="form-item input-inline">
+                        <label for="rw_options" class="block text-sm font-medium text-gray-700">R/W options</label>
+                        <div class="mt-1">
+                            <select class="rounded-full" style="width: 100%;" name="rw_options" v-model="permission.rw_options">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                </div>
+
+
+                <div class="form-item input-inline">
+                        <label for="rw_parameters" class="block text-sm font-medium text-gray-700">R/W parameters</label>
+                        <div class="mt-1">
+                            <select class="rounded-full" style="width: 100%;" name="rw_parameters" v-model="permission.rw_parameters">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                </div>
+
+                <div class="form-item input-inline">
+                        <label for="rw_users" class="block text-sm font-medium text-gray-700">R/W users</label>
+                        <div class="mt-1">
+                            <select class="rounded-full" style="width: 100%;" name="rw_users" v-model="permission.rw_users">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                </div>
+
             </div>
 
-             <!-- TODO: another fields   -->
-
-            <div class="mt-4">
-                <!-- <label for="deal_title" class="block text-sm font-medium text-gray-700">Title</label>
-                <div class="mt-1">
-                    <input type="text" name="title" id="deal_title"
-                        class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                        v-model="">
-                </div> -->
-            </div>
+           <!-- TODO: another fields   -->
 
             <div  class="form-controll">
                 <button
                     type="submit"
-                    class="btn btn_green inline-flex items-center ml-1 px-6 py-2 text-xs font-semiboldtext-sm font-medium mt_2">
+                    class="btn btn_green inline-flex items-center ml-1  font-semiboldtext-sm font-medium mt_2">
                     Save
                 </button>
+
+                <router-link
+                    class="btn btn_gray ml-2 inline-flex items-center  font-semibold ml_2"
+                    :to="{ name: 'permissions.index' }">
+                    Cancel
+                </router-link>
             </div>
 
     </form>
-
+</div>
 </template>
 <script setup>
     import { ref, onMounted } from 'vue';

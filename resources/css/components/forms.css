@@ -12,3 +12,14 @@ display: inline-block;
 .show_form {
     padding: 1.5rem;
 }
+
+.input-inline {
+    padding: 0 1rem;
+    min-width: 10rem;
+}
+
+.form-input_grout_inline {
+    display: flex;
+    flex-direction: row;
+    margin: 2rem;
+}

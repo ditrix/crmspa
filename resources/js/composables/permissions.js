@@ -10,21 +10,50 @@ export default function usePermisiions() {
     const permission = ref([]);
 
     const getPermissions = async () => {
-        let response = await axios.get('api/permissions');
-        permissions.value = response.data.data;
+
+        try {
+
+            let response = await axios.get('api/permissions');
+            permissions.value = response.data.data;
+
+        } catch(error) {
+            console.error('error fetch data: ',error)
+        }
+
     }
 
     const showPermission = async (id) => {
 
-        const response = await axios.get(`/api/permissions/${id}`)
-        permission.value = response.data.data
+        if (!id) {
+            console.warn('ID is missing');
+            return
+        }
+
+        try {
+            const response = await axios.get(`/api/permissions/${id}`)
+            permission.value = response.data.data
+
+        }
+        catch(error) {
+            console.log('error fetch data: ',error)
+        }
 
     }
 
     const updatePermission = async  (id) => {
-        const response = await axios.put(`/api/permissions/${id}`,permission.value)
 
-        await router.push({ name: 'permissions.index' });
+        if (!id) {
+            console.warn('ID is missing');
+            return
+        }
+
+        try {
+
+            await axios.put(`/api/permissions/${id}`,permission.value)
+        }
+        catch(error) {
+            console.log('error put data: ',error)
+        }
 
     }
 

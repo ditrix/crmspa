@@ -202,3 +202,7 @@ border: 1px red solid;
 .tx_center {
     text-align: center;
 }
+
+.fbold {
+    font-weight: bold;
+}

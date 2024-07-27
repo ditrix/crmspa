@@ -1,6 +1,9 @@
 <template>
-    Permissions
-    <table class="min-w-full  border divide-y divide-gray-300 grid_table">
+    <div class="page_title text-xl mb-2 mt-4">Permissions</div>
+
+
+    <div class="content-wrapper" style="width: 100%;">
+        <table class="min-w-full  border divide-y divide-gray-300 grid_table">
         <thead>
             <tr>
                 <th>role</th>
@@ -17,8 +20,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="permission in permissions" :key="permission.id">
-                <td class="pl_1">{{ permission.role }}</td>
+            <tr v-for="permission in permissions" :key="permission.id" class="greed_tr">
+                <td class="pl_1 fbold">{{ permission.role }}</td>
                 <td class="tx_center">{{ formatBoolean(permission.rw_own_customer) }}</td>
                 <td class="tx_center">{{ formatBoolean(permission.rw_own_deals) }}</td>
                 <td class="tx_center">{{ formatBoolean(permission.rw_own_reports) }}</td>
@@ -37,7 +40,10 @@
                 </td>
             </tr>
         </tbody>
-    </table>
+        </table>
+    </div>
+
+
 </template>
 
 <script setup>
@@ -55,7 +61,10 @@ const {permissions, getPermissions} = usePermissions()
 Правильный способ — передать саму функцию getPermissions в onMounted, чтобы она была вызвана в нужный момент.
 */
 
-  onMounted(getPermissions) // NOT onMounted(getPermissions())
+  onMounted(
+    () => getPermissions()
+
+    )
 
 </script>
 
