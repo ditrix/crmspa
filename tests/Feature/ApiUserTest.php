@@ -8,9 +8,14 @@ use Tests\TestCase;
 
 class ApiUserTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
+
+    public function test_index(): void
+    {
+        $response = $this->getJson('api/users/');
+        $response->assertStatus(200);
+      //  $response->dump();
+    }
+
     public function test_user(): void
     {
 

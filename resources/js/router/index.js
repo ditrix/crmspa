@@ -11,6 +11,9 @@ import Parameters from '@/Pages/Parameters.vue'
 import Reports from '@/Pages/Reports.vue'
 
 import PermissionsShow from '@/Components/Permissions/PermissionsShow.vue'
+import UsersShow from '@/Components/Users/UsersShow.vue'
+import UsersCreate from '@/Components/Users/UsersCreate.vue'
+
 
 
 
@@ -21,8 +24,27 @@ const routes = [
     { path: '/deals', component: Deals },
     { path: '/reports', component: Reports },
     { path: '/parameters', component: Parameters },
-    { path: '/users', component: Users },
-    { path: '/permissions', component: Permissions,  name: 'permissions.index' },
+    {
+        path: '/users',
+        component: Users,
+        name: 'users.index'
+    },
+    {
+        path: '/users/:id/show',
+        component: UsersShow,
+        name: 'users.show',
+        props: true,
+    },
+    {
+        path: '/users/create',
+        component: UsersCreate,
+        name: 'users.store',
+    },
+    {
+        path: '/permissions',
+        component: Permissions,
+        name: 'permissions.index'
+    },
     {
         path: '/permissions/:id/show',
         name: 'permissions.show',

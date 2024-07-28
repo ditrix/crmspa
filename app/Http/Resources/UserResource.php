@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\PermissionResource;
 
 class UserResource extends JsonResource
 {
@@ -15,6 +16,7 @@ class UserResource extends JsonResource
     public function toArray(Request $request): array
     {
 
+        //return parent::toArray($request);
         return [
             'id'            => $this->id,
             'permission_id' => $this->permission_id,
@@ -23,7 +25,8 @@ class UserResource extends JsonResource
             'email'         => $this->email,
             'phone'         => $this->phone,
             'password'      => $this->password,
-            'permissions'   => PermissionResource::collection($this->user)
+            'permission'    => new PermissionResource($this->whenLoaded('permission')),
         ];
+
     }
 }
