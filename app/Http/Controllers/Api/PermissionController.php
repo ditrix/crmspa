@@ -33,6 +33,7 @@ class PermissionController extends Controller
     public function update(PermissionRequest $request, Permission $permission)
     {
         $permission->update($request->validated());
+
         return new PermissionResource($permission);
     }
 

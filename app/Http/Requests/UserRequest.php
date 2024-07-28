@@ -11,7 +11,7 @@ class UserRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -26,7 +26,8 @@ class UserRequest extends FormRequest
             'name'          => 'nullable|string',
             'email'         => 'required|string',
             'phone'         => 'nullable|string',
-            'password'      => 'required|string'
+            'password'      => 'required|string',
+            'is_active'     => 'required|boolean'
         ];
     }
 }

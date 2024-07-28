@@ -23,7 +23,7 @@ class ApiPermissionTest extends TestCase
 
 
         $data = [
-            'role'       => 'top_manager',
+            'role'              => 'top_manager',
             'rw_own_customer'   => true,
             'rw_own_deals'      => true,
             'rw_own_reports'    => true,
