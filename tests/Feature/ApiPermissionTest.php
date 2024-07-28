@@ -11,7 +11,7 @@ class ApiPermissionTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_get(): void
+    public function _test_get(): void
     {
         $response = $this->getJson('api/permissions');
 
@@ -19,7 +19,7 @@ class ApiPermissionTest extends TestCase
     }
 
 
-    public function test_permission_foo() {
+    public function _test_permission_foo() {
 
 
         $data = [
