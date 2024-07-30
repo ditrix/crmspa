@@ -50,7 +50,7 @@
             <div class="form-item input-inline">
                 <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
                 <div class="mt-1">
-                    <input type="text" name="phone" id="name"
+                    <input type="text" name="phone" id="phone"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             v-model="form.phone">
                 </div>
