@@ -1,24 +1,70 @@
 <template>
+<div class="breadcrump">
+    <router-link
+        class="items-center px-6 py-2 text-xs font-semibold ml_2"
+        :to="{ name: 'users.index' }">
+        users
+    </router-link>
+</div>
 
 <div class="contanier">
-
-
     <form class="show_form space-y-6 rounded-md shadow-md mt_2 p" v-on:submit.prevent="saveUser">
 
         <div class="page_title text-xl mb-2">User {{ user.id }}</div>
 
- <!-- TODO another fields  -->
+        <div class="form-input_group_inline">
+
+            <div class="form-item input-inline widget_50">
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <div class="mt-1">
+                    <input type="text" name="name" id="name"
+                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            v-model="user.name">
+                </div>
+            </div>
+            <div class="form-item input-inline widget_30">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <div class="mt-1">
+                    <input type="text" name="name" id="email"
+                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            v-model="user.email">
+                </div>
+
+            </div>
+            <div class="form-item input-inline">
+                <label for="phone" class="block text-sm font-medium text-gray-700">Phone</label>
+                <div class="mt-1">
+                    <input type="text" name="phone" id="name"
+                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            v-model="user.phone">
+                </div>
+            </div>
+        </div>
+
 
         <div class="form-input_group_inline">
 
-            <div class="form-item input-inline">
-                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-                    <div class="mt-1">
-                        <input type="text" name="name" id="name"
-                                class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                v-model="user.name">
-                    </div>
+            <div class="form-item input-inline widget_30">
+                <label for="permission" class="block text-sm font-medium text-gray-700">Permission</label>
+                <div class="mt-1">
+                    <select id="permission" class="rounded-full border-gray-300" style="width: 100%;" name="permission_id" v-model="user.permission_id">
+                        <option v-for="permission in permissions" :value="permission.id">
+                            {{ permission.role_name }}
+                        </option>
+                    </select>
+                </div>
             </div>
+
+            <div class="form-item input-inline widget_10">
+                <label for="is_active" class="block text-sm font-medium text-gray-700">Active</label>
+                <div class="mt-1">
+                    <select id="is_active" class="rounded-full border-gray-300" style="width: 100%;" name="is_active" v-model="user.is_active">
+                        <option value="0">No</option>
+                        <option value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+
         </div>
 
         <div  class="form-controll">
@@ -29,7 +75,7 @@
                 </button>
 
                 <router-link
-                    class="btn btn_light_gray ml-2 inline-flex items-center  font-semibold ml_2"
+                    class="btn btn_lightgray ml-2 inline-flex items-center  font-semibold ml_2"
                     :to="{ name: 'users.index' }">
                     Cancel
                 </router-link>
@@ -37,11 +83,6 @@
     </form>
 
 </div>
-
-
-
-
-
 
 </template>
 
@@ -53,7 +94,7 @@ import { onMounted } from 'vue'
 
 import useUsers from '@/composables/users'
 
-const {user, getUser} = useUsers();
+const {user, permissions, getUser, updateUser} = useUsers();
 
 // const saveUser = async () => {
 
@@ -70,8 +111,8 @@ const props = defineProps({
 
 //console.log(user);
 
-function saveUser() {
-
+const  saveUser = async () => {
+    await updateUser(props.id)
     console.log('save user');
 }
 

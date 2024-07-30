@@ -18,7 +18,7 @@ display: inline-block;
     min-width: 10rem;
 }
 
-.form-input_grout_inline {
+.form-input_group_inline {
     display: flex;
     flex-direction: row;
     margin: 2rem;

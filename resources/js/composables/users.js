@@ -27,7 +27,6 @@ export default function useUsers() {
 
     const getUser = async (id) => {
 
-
         if (!id) {
             console.warn('ID is missing');
             return
@@ -40,9 +39,27 @@ export default function useUsers() {
 
             const permissionsResponse = await axios.get('/api/permissions');
             permissions.value = permissionsResponse.data.data;
+            console.log(permissions.value);
 
         } catch (error) {
             console.error('error fetch data: ',error)
+        }
+
+    }
+
+    const updateUser = async  (id) => {
+
+        if (!id) {
+            console.warn('ID is missing');
+            return
+        }
+
+        try {
+
+            await axios.put(`/api/users/${id}`,user.value)
+        }
+        catch(error) {
+            console.log('error put data: ',error)
         }
 
     }
@@ -53,6 +70,7 @@ export default function useUsers() {
         permissions,
         getUsers,
         getUser,
+        updateUser,
     }
 
 }

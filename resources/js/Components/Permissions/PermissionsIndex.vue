@@ -21,7 +21,7 @@
         </thead>
         <tbody>
             <tr v-for="permission in permissions" :key="permission.id" class="greed_tr">
-                <td class="pl_1 fbold">{{ permission.role }}</td>
+                <td class="pl_1 fbold">{{ permission.role_name }}</td>
                 <td class="tx_center">{{ formatBoolean(permission.rw_own_customer) }}</td>
                 <td class="tx_center">{{ formatBoolean(permission.rw_own_deals) }}</td>
                 <td class="tx_center">{{ formatBoolean(permission.rw_own_reports) }}</td>
@@ -33,7 +33,7 @@
                 <td class="tx_center">{{ formatBoolean(permission.rw_users) }}</td>
                 <td class="tx_center">
                     <router-link
-                        class="btn btn_gray inline-flex items-center px-4 py-2 text-xs font-semibold"
+                        class="btn btn_lightgray inline-flex items-center px-4 py-2 text-xs font-semibold"
                         :to="{ name: 'permissions.show', params: { id: permission.id} }">
                         Edit
                     </router-link>

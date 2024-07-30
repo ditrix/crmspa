@@ -26,10 +26,27 @@ class Permission extends Model
         'rw_users',
     ];
 
+    protected $appends = ['role_name'];
 
     public function getRoleNameAttribute()
     {
-        return $this->getRoleName();
+        switch ($this->role) {
+
+            case 'manager':
+
+                return 'Manager';
+
+            case 'top_manager':
+
+                return 'Top Manager';
+
+            case 'admin':
+
+                return 'Admin';
+
+            default:
+                return 'Unknown Role';
+        }
     }
 
     public function getRoleName()

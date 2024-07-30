@@ -26,6 +26,7 @@ class UserResource extends JsonResource
             'phone'         => $this->phone,
             'password'      => $this->password,
             'permission'    => new PermissionResource($this->whenLoaded('permission')),
+            'role_name'     => $this->role_name,
         ];
 
     }

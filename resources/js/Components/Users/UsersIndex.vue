@@ -1,7 +1,6 @@
-<template>user index soon
+<template>
 
 <div class="page_title text-xl mb-2 mt-4">Users</div>
-
 
 <div class="content-wrapper" style="width: 100%;">
     <table class="min-w-full  border divide-y divide-gray-300 grid_table">
@@ -23,10 +22,10 @@
             <td class="pl_4">{{ user.email }}</td>
             <td class="pl_4">{{ user.phone }}</td>
             <td class="tx_center">{{ formatBoolean(user.is_active) }}</td>
-            <td class="pl_4">{{ user.permission.role }}</td>
+            <td class="pl_4">{{ user.permission.role_name }}</td>
             <td class="tx_center">
                 <router-link
-                    class="btn btn_gray inline-flex items-center px-4 py-2 text-xs font-semibold"
+                    class="btn btn_lightgray inline-flex items-center px-4 py-2 text-xs font-semibold"
                     :to="{ name: 'users.show', params: { id: user.id} }">
                     Edit
                 </router-link>
@@ -37,6 +36,7 @@
 </div>
 
 </template>
+
 <script setup>
 
 import { onMounted } from 'vue'
@@ -45,8 +45,6 @@ import useUsers from '@/composables/users'
 import { formatBoolean } from '@/helpers/functions'
 
 const {users, getUsers} = useUsers();
-
-
 
 onMounted( () => getUsers() );
 

@@ -27,6 +27,7 @@ class PermissionResource extends JsonResource
             'rw_options'        => $this->rw_options,
             'rw_parameters'     => $this->rw_parameters,
             'rw_users'          => $this->rw_users,
+            'role_name'         => $this->role_name,
         ];
     }
 }
