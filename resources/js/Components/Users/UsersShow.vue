@@ -1,13 +1,28 @@
 <template>
 <div class="breadcrump">
     <router-link
-        class="items-center px-6 py-2 text-xs font-semibold ml_2"
+        class="items-center px-2 py-2 text-xs font-semibold"
+        :to="{ name: 'page.home' }">
+        Home
+    </router-link>|
+    <router-link
+        class="items-center px-2 py-2 text-xs font-semibold"
         :to="{ name: 'users.index' }">
         users
-    </router-link>
+    </router-link>| <span class="text-xs px-2 py-2 font-semibold">User</span>
 </div>
 
 <div class="contanier">
+
+     <!-- show errors block  -->
+     <div v-if="errors">
+        <div v-for="(v, k) in errors" :key="k" class="bg-red-400 text-white rounded font-bold mb-4 shadow-lg py-2 px-4 pr-0">
+            <p v-for="error in v" :key="error" class="text-sm">
+                {{ error }}
+            </p>
+        </div>
+    </div>
+
     <form class="show_form space-y-6 rounded-md shadow-md mt_2 p" v-on:submit.prevent="saveUser">
 
         <div class="page_title text-xl mb-2">User {{ user.id }}</div>
@@ -65,6 +80,15 @@
                 </div>
             </div>
 
+            <div class="form-item input-inline">
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <div class="mt-1">
+                    <input type="password" name="password" id="password"
+                            class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                            v-model="user.password">
+                </div>
+            </div>
+
         </div>
 
         <div  class="form-controll">
@@ -79,7 +103,7 @@
                     :to="{ name: 'users.index' }">
                     Cancel
                 </router-link>
-            </div>
+        </div>
     </form>
 
 </div>
@@ -94,7 +118,7 @@ import { onMounted } from 'vue'
 
 import useUsers from '@/composables/users'
 
-const {user, permissions, getUser, updateUser} = useUsers();
+const {user, permissions, errors, getUser, updateUser, getPermissions} = useUsers();
 
 // const saveUser = async () => {
 
@@ -116,7 +140,10 @@ const  saveUser = async () => {
     console.log('save user');
 }
 
-onMounted( () => getUser(props.id) );
+onMounted( () => {
+    getUser(props.id);
+    getPermissions();
+});
 
 </script>
 

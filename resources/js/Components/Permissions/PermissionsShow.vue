@@ -1,10 +1,17 @@
 <template>
-<div class="breadcrump">
+
+ <div class="breadcrump">
     <router-link
-        class="items-center px-6 py-2 text-xs font-semibold ml_2"
+        class="items-center px-2 py-2 text-xs font-semibold"
+        :to="{ name: 'page.home' }">
+        Home
+    </router-link>|
+    <router-link
+        class="items-center px-2 py-2 text-xs font-semibold"
         :to="{ name: 'permissions.index' }">
         permissions
-    </router-link>
+    </router-link>|
+    <span class="text-xs px-2 py-2 font-semibold">Permission</span>
 </div>
 
 <div class="contanier">

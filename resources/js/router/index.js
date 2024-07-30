@@ -19,7 +19,7 @@ import UsersCreate from '@/Components/Users/UsersCreate.vue'
 
 
 const routes = [
-    { path: '/', component: Home },
+    { path: '/', component: Home, name: 'page.home' },
     { path: '/dashboard', component: Dashboard },
     { path: '/customers', component: Customers },
     { path: '/deals', component: Deals },

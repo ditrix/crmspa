@@ -1,4 +1,13 @@
 <template>
+ <div class="breadcrump">
+    <router-link
+        class="items-center px-2 py-2 text-xs font-semibold"
+        :to="{ name: 'page.home' }">
+        Home
+    </router-link>|
+    <span class="text-xs px-2 py-2 font-semibold">Permissions</span>
+</div>
+
     <div class="page_title text-xl mb-2 mt-4">Permissions</div>
 
 
