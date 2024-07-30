@@ -5,16 +5,17 @@ import Dashboard from '@/Pages/Dashboard.vue'
 import Customers from '@/Pages/Customers.vue'
 import Deals from '@/Pages/Deals.vue'
 import Options from '@/Pages/Options.vue'
-import Permissions from '@/Pages/Permissions.vue'
-import Users from '@/Pages/Users.vue'
 import Parameters from '@/Pages/Parameters.vue'
 import Reports from '@/Pages/Reports.vue'
 
+/* provide permissions for admin, top manager, manager */
+import Permissions from '@/Pages/Permissions.vue'
 import PermissionsShow from '@/Components/Permissions/PermissionsShow.vue'
+
+/* provide users wth permissions */
+import Users from '@/Pages/Users.vue'
 import UsersShow from '@/Components/Users/UsersShow.vue'
 import UsersCreate from '@/Components/Users/UsersCreate.vue'
-
-
 
 
 const routes = [
@@ -23,6 +24,21 @@ const routes = [
     { path: '/customers', component: Customers },
     { path: '/deals', component: Deals },
     { path: '/reports', component: Reports },
+
+    {
+        path: '/permissions',
+        component: Permissions,
+        name: 'permissions.index'
+    },
+    {
+        path: '/permissions/:id/show',
+        name: 'permissions.show',
+        component: PermissionsShow,
+        props: true,
+    },
+
+
+
     { path: '/parameters', component: Parameters },
     {
         path: '/users',
@@ -40,17 +56,7 @@ const routes = [
         component: UsersCreate,
         name: 'users.store',
     },
-    {
-        path: '/permissions',
-        component: Permissions,
-        name: 'permissions.index'
-    },
-    {
-        path: '/permissions/:id/show',
-        name: 'permissions.show',
-        component: PermissionsShow,
-        props: true,
-    },
+
     { path: '/options', component: Options },
 ];
 

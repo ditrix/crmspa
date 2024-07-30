@@ -123,12 +123,12 @@
             <div  class="form-controll">
                 <button
                     type="submit"
-                    class="btn btn_green inline-flex items-center ml-1  font-semiboldtext-sm font-medium mt_2">
+                    class="btn btn_blue inline-flex items-center ml-1  font-semiboldtext-sm font-medium mt_2">
                     Save
                 </button>
 
                 <router-link
-                    class="btn btn_gray ml-2 inline-flex items-center  font-semibold ml_2"
+                    class="btn btn_lightgray ml-2 inline-flex items-center  font-semibold ml_2"
                     :to="{ name: 'permissions.index' }">
                     Cancel
                 </router-link>
@@ -144,7 +144,7 @@
 
     import usePermissions from '@/composables/permissions'
 
-    const {permission, showPermission, updatePermission} = usePermissions()
+    const {permission, getPermission, updatePermission} = usePermissions()
 
     const props = defineProps({
         id: {
@@ -160,7 +160,7 @@
     }
 
     onMounted(
-        () => showPermission(props.id)
+        () => getPermission(props.id)
     )
 
 

@@ -22,7 +22,7 @@ export default function usePermisiions() {
 
     }
 
-    const showPermission = async (id) => {
+    const getPermission = async (id) => {
 
         if (!id) {
             console.warn('ID is missing');
@@ -60,7 +60,7 @@ export default function usePermisiions() {
     return {
         permissions,
         permission,
-        showPermission,
+        getPermission,
         getPermissions,
         updatePermission,
     }

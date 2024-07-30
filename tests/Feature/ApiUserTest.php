@@ -30,14 +30,16 @@ class ApiUserTest extends TestCase
             'is_active' => false
         ];
 
+
         $response = $this->postJson('api/users',$data);
         $response->assertStatus(201);
+//        $response->dump();
 
         // get user
         $id = $response->json('data.id');
         $response = $this->getJson('api/users/'.$id);
         $response->assertStatus(200);
-
+        $response->dump();
         // get users
         $response = $this->getJson('api/users/');
         $response->assertStatus(200);
@@ -49,7 +51,7 @@ class ApiUserTest extends TestCase
             'email' => $this->generateRandomEmail(),
             'phone' => '+38066064632',
             'password' => 'password',
-            'is_active' => false
+        //    'is_active' => false
         ];
         $response = $this->postJson('api/users',$data);
         $response->assertStatus(201);

@@ -1,6 +1,6 @@
 
 .btn {
-    border-radius: 1rem;
+    border-radius: 10%;
     padding: 0.6rem 2rem;
 }
 
@@ -28,4 +28,10 @@
 .btn_gray {
     background-color: grey;
     color: white;
+}
+
+
+.btn_lightgray {
+    background-color: lightgray;
+    color: black;
 }
