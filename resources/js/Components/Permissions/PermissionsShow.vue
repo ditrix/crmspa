@@ -151,10 +151,8 @@
         }
     });
 
-
     const SavePermission = async () => {
         await updatePermission(props.id)
-        //await console.log(SavePermission)
     }
 
     onMounted(

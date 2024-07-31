@@ -21,5 +21,6 @@ display: inline-block;
 .form-input_group_inline {
     display: flex;
     flex-direction: row;
-    margin: 2rem;
+    padding: 0;
+    /* margin: 2rem; */
 }
