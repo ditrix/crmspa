@@ -33,13 +33,13 @@ class ApiUserTest extends TestCase
 
         $response = $this->postJson('api/users',$data);
         $response->assertStatus(201);
-//        $response->dump();
+
 
         // get user
         $id = $response->json('data.id');
         $response = $this->getJson('api/users/'.$id);
         $response->assertStatus(200);
-        $response->dump();
+
         // get users
         $response = $this->getJson('api/users/');
         $response->assertStatus(200);
@@ -65,7 +65,6 @@ class ApiUserTest extends TestCase
         $response = $this->putJson('api/users/'.$id,$updated_data);
         $response = $this->getJson('api/users/'.$id);
 
-        $response->dump();
 
     }
 

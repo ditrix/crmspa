@@ -17,6 +17,10 @@ import Users from '@/Pages/Users.vue'
 import UsersShow from '@/Components/Users/UsersShow.vue'
 import UsersCreate from '@/Components/Users/UsersCreate.vue'
 
+/* status patameters */
+import StatusParametersIndex from '@/Components/Parameters/StatusParametersIndex.vue'
+import StatusParameterShow from '@/Components/Parameters/StatusParameterShow.vue'
+import StatusParameterCreate from '@/Components/Parameters/StatusParameterCreate.vue'
 
 const routes = [
     { path: '/', component: Home, name: 'page.home' },
@@ -37,9 +41,26 @@ const routes = [
         props: true,
     },
 
-
-
-    { path: '/parameters', component: Parameters },
+    { path: '/parameters',
+        component: Parameters,   //
+        name: 'parameters.index'
+    },
+    {
+        path: '/status_parameters',
+        component: StatusParametersIndex,
+        name: 'status_parameters.index'
+    },
+    {
+        path: '/status_parameters/:id/show',
+        component: StatusParameterShow,
+        name: 'status_parameters.show',
+        props: true,
+    },
+    {
+        path: '/status_parameters/create',
+        component: StatusParameterCreate,
+        name: 'status_parameters.create'
+    },
     {
         path: '/users',
         component: Users,

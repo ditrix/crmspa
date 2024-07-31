@@ -1,3 +1,7 @@
+html {
+    --color-blue: #3578E5;
+}
+
 .dbg {
 border: 1px red solid;
 }

@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-//se Database\Seeders\Permission\InitPermissionSeeder;
-use Database\Seeders\User\InitPermissionSeeder;
+//use Database\Seeders\User\InitPermissionSeeder;
+use Database\Seeders\Parameter\ParameterStatusSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
 
         //  \App\Models\User::factory(4)->create();
 
+        // $this->call([
+        //     ParameterStatusSeeder::class
+        // ]);
 
     }
 }

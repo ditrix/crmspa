@@ -120,10 +120,6 @@ import useUsers from '@/composables/users'
 
 const {user, permissions, errors, getUser, updateUser, getPermissions} = useUsers();
 
-// const saveUser = async () => {
-
-// }
-
 const props = defineProps({
     id: {
         required: true,
@@ -132,12 +128,9 @@ const props = defineProps({
 });
 
 
-
-//console.log(user);
-
 const  saveUser = async () => {
     await updateUser(props.id)
-    console.log('save user');
+
 }
 
 onMounted( () => {
@@ -146,13 +139,3 @@ onMounted( () => {
 });
 
 </script>
-
-<!--
- id
-permission_id,
-is_active,
-name,
-email,
-phone,
-password,
-role  -->
