@@ -1,0 +1,10 @@
+deal
+Bilateral Transactions     двусторонняя сделка
+Multilateral Transactions  многосторонняя сделка
+--------------
+contracts
+Contracts    -   Договор купли-продажи
+Supply Contract  Контракт на поставку товаров
+Service Contract Контракт на оказание услуг
+------------------------------------------
+funnel_stage

@@ -35,3 +35,10 @@
     background-color: lightgray;
     color: black;
 }
+
+.deb_blue {
+    --color_blue: #3578E5;
+
+    --color_green: #00A400;
+    --fds-green-65: #51CE70;
+}
