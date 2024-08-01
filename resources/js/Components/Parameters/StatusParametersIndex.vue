@@ -34,6 +34,11 @@
                         :to="{ name: 'status_parameters.show', params: { id: status_parameter.id} }">
                         Edit
                     </router-link>
+                    <button
+                        class="btn btn_red inline-flex items-center ml-1 px-4 py-2 text-xs font-semiboldtext-sm font-medium"
+                        @click="deleteStatusParameter(status_parameter.id)" >
+                        X
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -48,7 +53,19 @@
     import useStatusParameters from '@/composables/parameters/status_parameters'
     import { formatBoolean } from '@/helpers/functions'
 
-    const {status_parameters, getStatusParameters} = useStatusParameters();
+    const {status_parameters, getStatusParameters, destroyStatusParameter} = useStatusParameters();
+
+    const deleteStatusParameter = async (id) => {
+
+        if (!window.confirm('You sure?')) {
+            return
+        }
+
+        await destroyStatusParameter(id)
+        await getStatusParameters();
+
+    }
+
 
     onMounted( () => getStatusParameters() );
 

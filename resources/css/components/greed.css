@@ -19,7 +19,7 @@
 .grid_table td {
     font-size: 1rem;
     color: black;
-    padding: 1rem 0.2rem;
+    padding: 0.2rem;
 }
 
 .grid_table .tr-data:hover {

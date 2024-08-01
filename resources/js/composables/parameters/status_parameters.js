@@ -61,6 +61,29 @@ export default function useStatusParameters() {
 
     }
 
+    const storeParameter = async (data) => {
+        errors.value = ''
+
+        try {
+            let response = await axios.post(`/api/parameter_status`, data);
+            await router.push({ name: 'status_parameters.index' });
+
+        } catch(error) {
+            console.error('error post data',error);
+            if (error.response.status === 422) {
+                for (const key in error.response.data.errors) {
+                    errors.value = error.response.data.errors
+                }
+            }
+        }
+    }
+
+    const destroyStatusParameter = async (id) => {
+
+        let response = await axios.delete(`/api/parameter_status/${id}`);
+
+    }
+
 
     return {
         status_parameters,
@@ -68,6 +91,8 @@ export default function useStatusParameters() {
         getStatusParameters,
         getStatusParameter,
         updateStatusParameter,
+        storeParameter,
+        destroyStatusParameter,
     }
 
 }
