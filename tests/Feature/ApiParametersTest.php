@@ -13,7 +13,7 @@ class ApiParametersTest extends TestCase
     /**
      * A basic feature test example.
      */
-    public function test_patameter_status_index(): void
+    public function test_patameter_status(): void
     {
         $response = $this->getJson('/api/parameter_status');
         $response->assertStatus(200);

@@ -5,7 +5,8 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 //use Database\Seeders\User\InitPermissionSeeder;
-use Database\Seeders\Parameter\ParameterStatusSeeder;
+//use Database\Seeders\Parameter\ParameterStatusSeeder;
+use Database\Seeders\Parameter\ContractTypeSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -25,6 +26,10 @@ class DatabaseSeeder extends Seeder
 
         // $this->call([
         //     ParameterStatusSeeder::class
+        // ]);
+
+        // $this->call([
+        //     ContractTypeSeeder::class
         // ]);
 
     }
