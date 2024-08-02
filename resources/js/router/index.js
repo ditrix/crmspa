@@ -22,6 +22,12 @@ import StatusParametersIndex from '@/Components/Parameters/StatusParametersIndex
 import StatusParameterShow from '@/Components/Parameters/StatusParameterShow.vue'
 import StatusParameterCreate from '@/Components/Parameters/StatusParameterCreate.vue'
 
+/* contract's types*/
+import ContractTypeIndex from '@/Components/Parameters/ContractTypeIndex.vue'
+import ContractTypeShow from '@/Components/Parameters/ContractTypeShow.vue'
+import ContractTypeCreate from '@/Components/Parameters/ContractTypeCreate.vue'
+
+
 const routes = [
     { path: '/', component: Home, name: 'page.home' },
     { path: '/dashboard', component: Dashboard },
@@ -42,7 +48,7 @@ const routes = [
     },
 
     { path: '/parameters',
-        component: Parameters,   //
+        component: Parameters,
         name: 'parameters.index'
     },
     {
@@ -60,6 +66,22 @@ const routes = [
         path: '/status_parameters/create',
         component: StatusParameterCreate,
         name: 'status_parameters.create'
+    },
+    {
+        path: '/contract_types',
+        component: ContractTypeIndex,
+        name: 'contract_types.index'
+    },
+    {
+        path: '/contract_types/:id/show',
+        component: ContractTypeShow,
+        name: 'contract_types.show',
+        props: true,
+    },
+    {
+        path: '/contract_types/create',
+        component: ContractTypeCreate,
+        name: 'contract_types.create'
     },
     {
         path: '/users',

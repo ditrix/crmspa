@@ -7,8 +7,8 @@
     </router-link>|
     <router-link
         class="items-center px-2 py-2 text-xs font-semibold"
-        :to="{ name: 'status_parameters.index' }">
-        users
+        :to="{ name: 'parameters.index' }">
+        parameters and options
     </router-link>| <span class="text-xs px-2 py-2 font-semibold">Status patameter</span>
 </div>
      <!-- show errors block  -->
@@ -72,7 +72,7 @@
 
                 <router-link
                     class="btn btn_lightgray ml-2 inline-flex items-center  font-semibold ml_2"
-                    :to="{ name: 'status_parameters.index' }">
+                    :to="{ name: 'parameters.index' }">
                     Cancel
                 </router-link>
         </div>
@@ -89,10 +89,6 @@ import { onMounted } from 'vue'
 import useStatusParameters from '@/composables/parameters/status_parameters'
 
 const {status_parameter, getStatusParameter, updateStatusParameter} = useStatusParameters();
-
-//let status_parameter_data = status_parameter.value
-//console.log(status_parameter)
-
 
 const saveStatusParameter = async () => {
     await updateStatusParameter(props.id)

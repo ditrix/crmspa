@@ -10,7 +10,7 @@
     <router-link
         class="items-center px-2 py-2 text-xs font-semibold"
         :to="{ name: 'status_parameters.index' }">
-        users
+        parameters
     </router-link>| <span class="text-xs px-2 py-2 font-semibold">Create status patameter</span>
 </div>
      <!-- show errors block  -->
@@ -45,9 +45,6 @@
                             v-model="form.description">
                 </div>
             </div>
-
-
-
 
         <div class="form-input_group_inline pl_1">
             <div class="form-item input-inline w_10">

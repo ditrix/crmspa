@@ -2,26 +2,26 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
 
-export default function useStatusParameters() {
+export default function useContractTypes() {
 
     const router = useRouter();
 
     const errors = ref('');
 
-    const status_parameters = ref([]);
+    const contract_types = ref([]);
 
-    const status_parameter = ref([]);
+    const contract_type = ref([]);
 
-    const getStatusParameters = async () => {
+    const getContractTypes = async () => {
 
+        let response = await axios.get('/api/contract_type');
 
-        let response = await axios.get('/api/parameter_status');
+        contract_types.value = response.data.data;
 
-        status_parameters.value = response.data.data;
 
     }
 
-    const getStatusParameter = async (id) => {
+    const getContractType = async (id) => {
 
             if (!id) {
                 console.warn('ID is missing');
@@ -29,9 +29,9 @@ export default function useStatusParameters() {
             }
 
            try {
-                const response = await axios.get(`/api/parameter_status/${id}`);
+                const response = await axios.get(`/api/contract_type/${id}`);
 
-                status_parameter.value = response.data.data;
+                contract_type.value = response.data.data;
 
             } catch (error) {
                 console.error('error fetch data: ',error)
@@ -39,7 +39,7 @@ export default function useStatusParameters() {
 
     }
 
-    const updateStatusParameter = async  (id) => {
+    const updateContractType = async  (id) => {
 
         if (!id) {
             console.warn('ID is missing');
@@ -50,10 +50,10 @@ export default function useStatusParameters() {
 
         try {
 
-            await axios.put(`/api/parameter_status/${id}`,status_parameter.value)
+            await axios.put(`/api/contract_type/${id}`,contract_type.value)
         }
         catch(error) {
-            console.error('error put data: ',error)
+
             if (error.response.status === 422) {
                 for (const key in error.response.data.errors) {
                     errors.value = error.response.data.errors
@@ -63,11 +63,11 @@ export default function useStatusParameters() {
 
     }
 
-    const storeParameter = async (data) => {
+    const storeContractType = async (data) => {
         errors.value = ''
 
         try {
-            let response = await axios.post(`/api/parameter_status`, data);
+            let response = await axios.post(`/api/contract_type`, data);
             await router.push({ name: 'parameters.index' });
 
         } catch(error) {
@@ -80,22 +80,22 @@ export default function useStatusParameters() {
         }
     }
 
-    const destroyStatusParameter = async (id) => {
+    const destroyContractType = async (id) => {
 
-        let response = await axios.delete(`/api/parameter_status/${id}`);
+        let response = await axios.delete(`/api/contract_type/${id}`);
 
     }
 
 
     return {
         errors,
-        status_parameters,
-        status_parameter,
-        getStatusParameters,
-        getStatusParameter,
-        updateStatusParameter,
-        storeParameter,
-        destroyStatusParameter,
+        contract_types,
+        contract_type,
+        getContractTypes,
+        getContractType,
+        updateContractType,
+        storeContractType,
+        destroyContractType,
     }
 
 }

@@ -11,7 +11,7 @@
     <div class="page_title text-xl mb-2 mt-4">Permissions</div>
 
 
-    <div class="content-wrapper" style="width: 100%;">
+    <div class="space-y-6 rounded-md shadow-md mt_2 pl_1 pr_1 pb_1 pt_1">
         <table class="min-w-full  border divide-y divide-gray-300 grid_table">
         <thead>
             <tr>
