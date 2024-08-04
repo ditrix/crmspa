@@ -47,7 +47,7 @@ const routes = [
     { path: '/deals', component: Deals },
     { path: '/reports', component: Reports },
 
-    { path: '/login', component: Login },
+    { path: '/login', component: Login, name: 'login' },
 
 
     {
@@ -125,13 +125,15 @@ const router = createRouter({
     routes,
     })
 
-    router.beforeEach((to, from, next) => {
-        const authStore = useAuthStore()
-        if (to.meta.requiresAuth && !authStore.isAuthenticated) {
-          next('/login')
-        } else {
-          next()
-        }
-      })
+
+router.beforeEach((to, from, next) => {
+const authStore = useAuthStore();
+if (to.name !== 'login' && !authStore.isAuthenticated) {
+    next({ name: 'login' });
+} else {
+    next();
+}
+});
+
 
 export default router
