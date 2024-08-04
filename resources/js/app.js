@@ -21,7 +21,28 @@ import '../css/app.css';
 //         color: '#4B5563',
 //     },
 // });
+import { createPinia } from 'pinia'
+import { useAuthStore } from './Stores/AuthStore'
 import { createApp } from 'vue'
 import App from './Components/App.vue'
 import router from './router'
-createApp(App).use(router).mount('#app')
+
+const app = createApp(App)
+const pinia = createPinia()
+
+
+app.use(router)
+app.use(pinia)
+
+// createApp(App).use(router).mount('#app')
+
+
+const authStore = useAuthStore()
+authStore.checkAuth().then(() => {
+  app.mount('#app')
+})
+
+
+//createApp(App).use(router).mount('#app')
+
+

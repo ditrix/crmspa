@@ -28,12 +28,23 @@ import ContractTypeShow from '@/Components/Parameters/ContractTypeShow.vue'
 import ContractTypeCreate from '@/Components/Parameters/ContractTypeCreate.vue'
 
 
+import Login from '../Pages/Auth/Login.vue'
+// import Register from '../Pages/Auth/Register.vue'
+// import Dashboard from '../Pages/Dashboard.vue'
+import { useAuthStore } from '../Stores/AuthStore'
+
+
+
+
 const routes = [
     { path: '/', component: Home, name: 'page.home' },
-    { path: '/dashboard', component: Dashboard },
+    { path: '/dashboard', component: Dashboard, name: 'dashboard' },
     { path: '/customers', component: Customers },
     { path: '/deals', component: Deals },
     { path: '/reports', component: Reports },
+
+    { path: '/login', component: Login },
+
 
     {
         path: '/permissions',
