@@ -38,7 +38,11 @@ import { useAuthStore } from '../Stores/AuthStore'
 
 const routes = [
     { path: '/', component: Home, name: 'page.home' },
-    { path: '/dashboard', component: Dashboard, name: 'dashboard' },
+    { path: '/dashboard',
+        component: Dashboard,
+        name: 'dashboard',
+        props: route => ({ user: useAuthStore().user }),
+    },
     { path: '/customers', component: Customers },
     { path: '/deals', component: Deals },
     { path: '/reports', component: Reports },
@@ -114,9 +118,20 @@ const routes = [
     { path: '/options', component: Options },
 ];
 
+
+
 const router = createRouter({
     history: createWebHistory(),
     routes,
     })
+
+    router.beforeEach((to, from, next) => {
+        const authStore = useAuthStore()
+        if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+          next('/login')
+        } else {
+          next()
+        }
+      })
 
 export default router

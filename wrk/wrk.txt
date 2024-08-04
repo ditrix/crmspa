@@ -332,3 +332,80 @@ import UserProfile from './UserProfile.vue'
 3. **Компонент UserProfile**: Использует данные из Pinia хранилища для отображения email пользователя.
 
 Таким образом, при успешной аутентификации и запросе на `/api/user`, email аутентифицированного пользователя будет отображаться в компоненте.
+
+
+////////////////////////////
+
+Для того чтобы компонент Vue обновлялся при изменении значения `isAuthenticated`, вы можете использовать реактивные свойства из Pinia. Вот пример, как это можно реализовать:
+
+1. **Создание Pinia Store:**
+
+   Вначале создайте Pinia store для управления состоянием аутентификации:
+
+   ```javascript
+   // stores/auth.js
+   import { defineStore } from 'pinia';
+
+   export const useAuthStore = defineStore('auth', {
+     state: () => ({
+       isAuthenticated: false,
+     }),
+     actions: {
+       login() {
+         this.isAuthenticated = true;
+       },
+       logout() {
+         this.isAuthenticated = false;
+       },
+     },
+   });
+   ```
+
+2. **Использование store в компоненте:**
+
+   Импортируйте и используйте ваш store в компоненте Vue:
+
+   ```vue
+   <template>
+     <nav v-if="authStore.isAuthenticated">
+       <ul>
+         <li><router-link to="/options">Options</router-link></li>
+         <li v-if="!authStore.isAuthenticated"><router-link to="/login">Login</router-link></li>
+         <li v-if="authStore.isAuthenticated"><a @click.prevent="logout">Logout</a></li>
+       </ul>
+     </nav>
+   </template>
+
+   <script>
+   import { useAuthStore } from '@/stores/auth';
+
+   export default {
+     setup() {
+       const authStore = useAuthStore();
+
+       const logout = () => {
+         authStore.logout();
+       };
+
+       return {
+         authStore,
+         logout,
+       };
+     },
+   };
+   </script>
+   ```
+
+3. **Вызов методов login и logout:**
+
+   Вы можете вызывать методы `login` и `logout` из вашего store в нужных местах вашего приложения:
+
+   ```javascript
+   // Пример вызова login
+   import { useAuthStore } from '@/stores/auth';
+
+   const authStore = useAuthStore();
+   authStore.login();
+   ```
+
+   Таким образом, при изменении значения `isAuthenticated` в Pinia store, ваш компонент будет автоматически обновляться и рендерить актуальное состояние навигации.
