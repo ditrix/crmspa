@@ -1,7 +1,7 @@
 <template>
     <nav  v-if="isAuthenticated">
     <ul>
-        <li><router-link to="/">Home</router-link></li>
+        <!-- <li><router-link to="/">Home</router-link></li> -->
         <li><router-link to="/dashboard">Dashboard</router-link></li>
         <li><router-link to="/customers">Customers</router-link></li>
         <li><router-link to="/deals">Deals</router-link></li>
