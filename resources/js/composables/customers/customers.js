@@ -29,9 +29,10 @@ export default function useCustomers() {
             }
 
            try {
-                const response = await axios.get(`/api/contract_type/${id}`);
+                const response = await axios.get(`/api/customers/${id}`);
 
                 customer.value = response.data.data;
+                console.log(customer.value);
 
             } catch (error) {
                 console.error('error fetch data: ',error)
@@ -50,7 +51,7 @@ export default function useCustomers() {
 
         try {
 
-            await axios.put(`/api/customers/${id}`,custmomer.value)
+            await axios.put(`/api/customers/${id}`, customer.value)
         }
         catch(error) {
 

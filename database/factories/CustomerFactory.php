@@ -24,6 +24,7 @@ class CustomerFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'address' => fake()->streetAddress(),
             'is_legal' => 0,
+            'is_active' => fake()->boolean(),
             'updated_at' =>  now(),
             'created_at' =>  now()
         ];

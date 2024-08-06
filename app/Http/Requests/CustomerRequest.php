@@ -29,6 +29,7 @@ class CustomerRequest extends FormRequest
             'phone'         => 'nullable',
             'address'       => 'nullable',
             'is_legal'      => 'nullable',
+            'is_active'     => 'nullable',
             'code'          => 'nullable',
             'contact_name'  => 'nullable',
             'contact_email' => 'nullable',

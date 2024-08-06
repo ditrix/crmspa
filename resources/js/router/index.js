@@ -33,17 +33,20 @@ import Login from '../Pages/Auth/Login.vue'
 // import Dashboard from '../Pages/Dashboard.vue'
 import { useAuthStore } from '../Stores/AuthStore'
 
-
+import CustomersIndex from '@/Components/Customers/CustomersIndex.vue'
+import CustomersCreate from '@/Components/Customers/CustomersCreate.vue'
+import CustomersShow from '@/Components/Customers/CustomersShow.vue'
 
 
 const routes = [
     { path: '/', component: Home, name: 'page.home' },
+    // { path: '/dashboard', component: Dashboard, name: 'page.dasboard' },
     { path: '/dashboard',
         component: Dashboard,
-        name: 'dashboard',
+        name: 'page.dashboard',
         props: route => ({ user: useAuthStore().user }),
     },
-    { path: '/customers', component: Customers },
+    { path: '/customers', component: Customers, name: 'custmomers.page' },
     { path: '/deals', component: Deals },
     { path: '/reports', component: Reports },
 
@@ -115,6 +118,23 @@ const routes = [
         name: 'users.store',
     },
 
+    {
+        path: '/customers',
+        component: CustomersIndex,
+        name: 'customers.index'
+    },
+
+    {
+        path: '/customers/:id/show',
+        component: CustomersShow,
+        name: 'customers.show',
+        props: true,
+    },
+    {
+        path: '/customers/create',
+        component: CustomersCreate,
+        name: 'customers.store',
+    },
     { path: '/options', component: Options },
 ];
 

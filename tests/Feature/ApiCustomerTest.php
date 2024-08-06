@@ -55,6 +55,9 @@ class ApiCustomerTest extends TestCase
         ];
 
         $response = $this->putJson('api/customers/'.$id, $updatedData);
+
+        $response->dump();
+
         $response->assertStatus(200);
 
         $response = $this->getJson('api/customers/'.$id);

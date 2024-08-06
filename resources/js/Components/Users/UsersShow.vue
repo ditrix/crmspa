@@ -2,7 +2,7 @@
 <div class="breadcrump">
     <router-link
         class="items-center px-2 py-2 text-xs font-semibold"
-        :to="{ name: 'page.home' }">
+        :to="{ name: 'dasboard.home' }">
         Home
     </router-link>|
     <router-link
@@ -40,7 +40,7 @@
             <div class="form-item input-inline widget_30">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                 <div class="mt-1">
-                    <input type="text" name="name" id="email"
+                    <input type="text" name="email" id="email"
                             class="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                             v-model="user.email">
                 </div>
