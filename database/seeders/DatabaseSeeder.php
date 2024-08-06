@@ -3,10 +3,14 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Customer;
 use Illuminate\Database\Seeder;
 //use Database\Seeders\User\InitPermissionSeeder;
 //use Database\Seeders\Parameter\ParameterStatusSeeder;
-use Database\Seeders\Parameter\ContractTypeSeeder;
+//use Database\Seeders\Parameter\ContractTypeSeeder;
+//use Database\Seeders\Parameter\ContractTypeSeeder;
+use Database\Seeders\Customer\InitDevCustomerSeeder;
 
 
 class DatabaseSeeder extends Seeder
@@ -31,6 +35,10 @@ class DatabaseSeeder extends Seeder
         // $this->call([
         //     ContractTypeSeeder::class
         // ]);
+
+        $this->call([
+            InitDevCustomerSeeder::class
+        ]);
 
     }
 }

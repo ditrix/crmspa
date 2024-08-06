@@ -28,11 +28,11 @@ class ApiContractTypeTest extends TestCase
         $response->assertStatus(201);
         $id = $response->json('data.id');
 
-        $response->dump();
+        //$response->dump();
 
         $response = $this->getJson('/api/contract_type');
         $response->assertStatus(200);
-       $response->dump();
+       //$response->dump();
 
 
         $response = $this->getJson('/api/contract_type/'.$id);

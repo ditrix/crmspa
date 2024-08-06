@@ -7,7 +7,7 @@ use App\Http\Controllers\Api\ContractTypeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\Api\CustomerController;
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -26,4 +26,5 @@ Route::apiResource('parameter_status',ParamerStatusController::class);
 
 Route::apiResource('contract_type',ContractTypeController::class);
 
+Route::apiResource('customers', CustomerController::class);
 
