@@ -4,8 +4,12 @@ import axios from 'axios'
 
 export const useAuthStore = defineStore('auth', {
   state: () => ({
+
     user: null,
-    isAuthenticated: false,
+    isAuthenticated: !!localStorage.getItem('user'),
+    //user: JSON.parse(sessionStorage.getItem('user')) || null,
+   // isAuthenticated: !!sessionStorage.getItem('user'),
+
   }),
 
   actions: {
@@ -15,6 +19,8 @@ export const useAuthStore = defineStore('auth', {
         const response = await axios.post('/login', credentials)
         this.user = response.data.user
         this.isAuthenticated = true
+      //  sessionStorage.setItem('user', JSON.stringify(this.user))
+        localStorage.setItem('user', JSON.stringify(this.user))
 
       } catch (error) {
         console.error('Login failed:', error)
@@ -26,7 +32,11 @@ export const useAuthStore = defineStore('auth', {
         await axios.post('/logout')
         this.user = null
         this.isAuthenticated = false
+        localStorage.removeItem('user')
+        //sessionStorage.removeItem('user')
+
       } catch (error) {
+
         console.error('Logout failed:', error)
       }
     },
@@ -35,10 +45,16 @@ export const useAuthStore = defineStore('auth', {
         const response = await axios.get('/api/user')
         this.user = response.data
         this.isAuthenticated = true
+
+        localStorage.setItem('user', JSON.stringify(this.user))
+        //sessionStorage.setItem('user', JSON.stringify(this.user))
+
       } catch (error) {
         console.error('Failed to check authentication:', error)
         this.isAuthenticated = false
-      }
+        localStorage.removeItem('user')
+        //sessionStorage.removeItem('user')
+        }
     }
   }
 })
